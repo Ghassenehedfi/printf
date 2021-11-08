@@ -7,24 +7,23 @@
 
 
 /**
-* struct convert - defines a structure for symbols and functions
-*
-* @sym: The operator
-* @f: The function associated
-*/
-struct convert
+ * struct printf - struct printf
+ * @c: The character
+ * @fun: The function associated
+ */
+typedef struct printf
 {
-	char *sym;
-	int (*f)(va_list);
-}
-typedef struct convert conv_t;
+	char c;
+	int (*fun)(va_list);
+} printf_t;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int _print_char(va_list);
-int _print_string(va_list);
-int _print_percent(va_list);
-int print(const char *format, conv_t funcs[], va_list args);
-int _print_int(va_list args);
+int get_func(const char s, va_list ap);
+
+int _print_char(va_list arg);
+int _print_string(va_list arg);
+int _print_percent(va_list arg);
+int _print_int(va_list arg);
 
 #endif
