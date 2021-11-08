@@ -5,6 +5,20 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+
+/**
+* struct convert - defines a structure for symbols and functions
+*
+* @sym: The operator
+* @f: The function associated
+*/
+struct convert
+{
+	char *sym;
+	int (*f)(va_list);
+}
+typedef struct convert conv_t;
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _print_char(va_list);
