@@ -1,29 +1,42 @@
+#include <stdio.h>
 #include "main.h"
 /**
- * get_func - check depending on separator
- * @s: char
- *@ap: argument of type va_list
- * Return: int
+ * _printf - print everything
+ * @format: char
+ * Return: count
  */
-int get_func(const char s, va_list ap)
+int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
-	printf_t ch[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'d', print_int},
-		{'i', print_int},
+	va_list arg;
+	int i = 0, count = 0, fun = 0;
 
-	};
-	while (ch[i].c != 0)
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+	return (-1);
+	va_start(arg, format);
+	while (*(format + i) && format)
 	{
-		if (ch[i].c == s)
+		if (*(format + i) != '%')
 		{
-			count = count + ch[i].fun(ap);
-			return (count);
+			_putchar (*(format + i));
+			count++;
 		}
-		i++;
+		if (*(format + i) == '%')
+		{
+			fun = get_func(*(format + (i + 1)), arg);
+			if (fun != 0)
+			{
+				count = count + fun;
+				i = i + 2;
+				continue;
+			}
+			if (*(format + (i + 1)) == '\0')
+			{
+				_putchar(*(format + i));
+				count++;
+			}
+		}
+			i++;
 	}
-	return (0);
+	va_end(arg);
+	return (count);
 }
