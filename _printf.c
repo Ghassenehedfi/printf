@@ -3,7 +3,39 @@
 /**
  *
  */
-int _printf(const char *format, ...){
+int _printf(const char *format, ...)
+{
+    va_list arg;
+	int i = 0, count = 0, fun = 0;
 
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+	return (-1);
+	va_start(arg, format);
+	while (*(format + i) && format)
+	{
+		if (*(format + i) != '%')
+		{
+			_putchar (*(format + i));
+			count++;
+		}
+		if (*(format + i) == '%')
+		{
+			fun = get_func(*(format + (i + 1)), arg);
+			if (fun != 0)
+			{
+				count = count + fun;
+				i = i + 2;
+				continue;
+			}
+			if (*(format + (i + 1)) == '\0')
+			{
+				_putchar(*(format + i));
+				count++;
+			}
+		}
+			i++;
+	}
+	va_end(arg);
+	return (count);
 }
-
+}
