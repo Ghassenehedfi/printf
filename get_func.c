@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * get_func - check functions
+ * get_func - check depending on separator
  * @s: char
- * @ap: argument
+ *@ap: argument of type va_list
  * Return: int
  */
 int get_func(const char s, va_list ap)
@@ -12,6 +12,8 @@ int get_func(const char s, va_list ap)
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
+		{'d', print_int},
+		{'i', print_int},
 
 	};
 	while (ch[i].c != 0)
