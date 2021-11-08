@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "main.h"
 /**
- *
+ * _printf - print everything
+ * @format: char
+ * Return: count
  */
 int _printf(const char *format, ...)
 {
-    va_list arg;
+	va_list arg;
 	int i = 0, count = 0, fun = 0;
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
@@ -37,5 +39,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(arg);
 	return (count);
-}
 }
