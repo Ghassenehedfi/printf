@@ -2,9 +2,9 @@
 /**
  * print - print a formated string
  * @format: string to print
- * @funcs: the list of functions
- * @args: the list of arguments passed into the program
- * Return: characters printed
+ * @funcs: functions
+ * @args: argument
+ * Return: count
  */
 int print(const char *format, convert_t funcs[], va_list args)
 {
