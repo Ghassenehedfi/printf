@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * _printf - prints formatted data to stdout
- * @format: string that contains the format to print
- * Return: number of characters written
+ * _printf - prints formatted data
+ * @format: string
+ * Return: int
  */
 int _printf(const char *format, ...)
 {
