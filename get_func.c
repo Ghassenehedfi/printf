@@ -8,25 +8,25 @@
  */
 int print(const char *format, convert_t funcs[], va_list args)
 {
-	int i, j, fvalue;
+	int i, s, fvalue;
 	int count = 0;
 
 		for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; funcs[j].sym != NULL; j++)
+			for (s = 0; funcs[s].sym != NULL; s++)
 			{
-				if (format[i + 1] == funcs[j].sym[0])
+				if (format[i + 1] == funcs[s].sym[0])
 				{
-					fvalue = funcs[j].f(args);
+					fvalue = funcs[s].f(args);
 					if (fvalue == -1)
 						return (-1);
 					count += fvalue;
 					break;
 				}
 			}
-			if (funcs[j].sym == NULL && format[i + 1] != ' ')
+			if (funcs[s].sym == NULL && format[i + 1] != ' ')
 			{
 				if (format[i + 1] != '\0')
 				{
