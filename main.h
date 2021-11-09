@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * struct convert - convert function
+ * struct convert - convert
  * @sym: char
  * @f: int
  */
