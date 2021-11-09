@@ -42,7 +42,7 @@ int print_percent(__attribute__((unused))va_list list)
 /**
  * print_int - prints an integer.
  * @args: argument pointer
- * Return: counter
+ * Return: i
  */
 int print_int(va_list args)
 {
