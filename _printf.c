@@ -2,7 +2,7 @@
 /**
  * _printf - prints formatted data
  * @format: string
- * Return: int
+ * Return: count
  */
 int _printf(const char *format, ...)
 {
