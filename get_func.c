@@ -1,42 +1,49 @@
-#include <stdio.h>
-#include "main.h"
+#include"main.h"
 /**
- * _printf - print everything
- * @format: char
- * Return: count
+ * print - print a formated string
+ * @format: string to print
+ * @funcs: the list of functions
+ * @args: the list of arguments passed into the program
+ * Return: characters printed
  */
-int _printf(const char *format, ...)
+int print(const char *format, convert_t funcs[], va_list args)
 {
-	va_list arg;
-	int i = 0, count = 0, fun = 0;
+	int i, j, fvalue;
+	int count = 0;
 
-	if (!format || (format[0] == '%' && format[1] == '\0'))
-	return (-1);
-	va_start(arg, format);
-	while (*(format + i) && format)
+		for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*(format + i) != '%')
+		if (format[i] == '%')
 		{
-			_putchar (*(format + i));
+			for (j = 0; funcs[j].sym != NULL; j++)
+			{
+				if (format[i + 1] == funcs[j].sym[0])
+				{
+					fvalue = funcs[j].f(args);
+					if (fvalue == -1)
+						return (-1);
+					count += fvalue;
+					break;
+				}
+			}
+			if (funcs[j].sym == NULL && format[i + 1] != ' ')
+			{
+				if (format[i + 1] != '\0')
+				{
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					count = count + 2;
+				}
+				else
+					return (-1);
+			}
+			i = i + 1;
+		}
+		else
+		{
+			_putchar(format[i]);
 			count++;
 		}
-		if (*(format + i) == '%')
-		{
-			fun = get_func(*(format + (i + 1)), arg);
-			if (fun != 0)
-			{
-				count = count + fun;
-				i = i + 2;
-				continue;
-			}
-			if (*(format + (i + 1)) == '\0')
-			{
-				_putchar(*(format + i));
-				count++;
-			}
-		}
-			i++;
 	}
-	va_end(arg);
 	return (count);
 }
