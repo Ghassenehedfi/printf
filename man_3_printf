@@ -1,0 +1,7 @@
+Name
+printf - write formatted output
+
+Synopsis 
+/usr/bin/printf
+printf format [argument]
+b 
