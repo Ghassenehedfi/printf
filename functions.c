@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * print_char - prints a character
- * @arg: The character to print, argument pointer
+ * @list: list
  * Return: 1
  */
 int print_char(va_list list)
@@ -11,8 +11,7 @@ int print_char(va_list list)
 }
 /**
  * print_string - prints a string
- * @arg: The string to print, argument pointer
- *
+ * @list: list
  * Return: i
  */
 int print_string(va_list list)
@@ -30,7 +29,7 @@ int print_string(va_list list)
 }
 /**
  *print_percent - print percent
- *@list: argument of type of va_list
+ *@list: argument
  * Return: 1
  */
 int print_percent(__attribute__((unused))va_list list)
@@ -41,11 +40,9 @@ int print_percent(__attribute__((unused))va_list list)
 }
 
 /**
- * print_int - function that prints an integer with helper function.
- * @arg: The string to print, argument pointer
- *
+ * print_int - prints an integer.
+ * @args: argument pointer
  * Return: counter
- *
  */
 int print_int(va_list args)
 {
