@@ -1,29 +1,28 @@
 #include "main.h"
 /**
- * get_func - check depending on separator
- * @s: char
- *@ap: argument of type va_list
- * Return: int
+ * _printf - prints formatted data
+ * @format: string
+ * Return: count
  */
-int get_func(const char s, va_list ap)
+int _printf(const char *format, ...)
 {
-	int i = 0, count = 0;
-	printf_t ch[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'d', print_int},
-		{'i', print_int},
+	int count = 0;
+	va_list args;
 
+	convert_t funcs[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_int},
+		{"i", print_int},
+		{NULL, NULL}
 	};
-	while (ch[i].c != 0)
-	{
-		if (ch[i].c == s)
-		{
-			count = count + ch[i].fun(ap);
-			return (count);
-		}
-		i++;
-	}
-	return (0);
+
+
+	if (format == NULL)
+		return (-1);
+	va_start(args, format);
+	count = print(format, funcs, args);
+	va_end(args);
+	return (count);
 }
